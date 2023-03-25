@@ -19,6 +19,7 @@ server:
           - scp: true
             path: /sap
             url: https://cb629c8e-9ddd-4225-b4db-603ce09635fb.abap.us10.hana.ondemand.com
+            destination: abap-cloud-riz-inno-abap-sbx-riz-inno-sbx
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:
