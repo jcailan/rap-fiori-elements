@@ -1,0 +1,71 @@
+_schema-version: "3.2"
+ID: com.jhodel.rap.travellist
+description: Travel List App
+version: 0.0.1
+parameters:
+  deploy_mode: html5-repo
+
+modules:
+  - name: raptl-destination-deployer
+    type: com.sap.application.content
+    requires:
+      - name: raptl-destination
+        parameters:
+          content-target: true
+      - name: raptl-repo-host
+        parameters:
+          service-key:
+            name: raptl-repo-host-key
+      - name: raptl-uaa
+        parameters:
+          service-key:
+            name: raptl-uaa-key
+    parameters:
+      content:
+        instance:
+          destinations:
+            - Name: raptl_repo_host
+              ServiceInstanceName: raptl-html5-host
+              ServiceKeyName: raptl-repo-host-key
+              sap.cloud.service: com.jhodel.rap.travellist
+            - Authentication: OAuth2UserTokenExchange
+              Name: raptl_uaa
+              ServiceInstanceName: raptl-xsuaa-srv
+              ServiceKeyName: raptl-uaa-key
+              sap.cloud.service: com.jhodel.rap.travellist
+          existing_destinations_policy: update
+    build-parameters:
+      no-source: true
+
+resources:
+  - name: raptl-uaa
+    type: org.cloudfoundry.managed-service
+    parameters:
+      path: ./xs-security.json
+      service: xsuaa
+      service-name: raptl-xsuaa-srv
+      service-plan: application
+
+  - name: raptl-repo-host
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-host
+
+  - name: raptl-destination
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite
+      config:
+        HTML5Runtime_enabled: true
+        version: 1.0.0
+        init_data:
+          instance:
+            existing_destinations_policy: update
+            destinations:
+              - Name: ui5
+                Type: HTTP
+                URL: https://ui5.sap.com
+                ProxyType: Internet
+                Authentication: NoAuthentication
