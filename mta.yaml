@@ -9,13 +9,14 @@ modules:
   - name: raptl-destination-deployer
     type: com.sap.application.content
     requires:
+      - name: abap-srv
       - name: raptl-destination
         parameters:
           content-target: true
-      - name: raptl-repo-host
+      - name: raptl-html5-host
         parameters:
           service-key:
-            name: raptl-repo-host-key
+            name: raptl-html5-host-key
       - name: raptl-uaa
         parameters:
           service-key:
@@ -24,29 +25,67 @@ modules:
       content:
         instance:
           destinations:
-            - Name: raptl_repo_host
-              ServiceInstanceName: raptl-html5-host
-              ServiceKeyName: raptl-repo-host-key
+            - Name: abap-srv
+              Authentication: OAuth2UserTokenExchange
+              TokenServiceInstanceName: raptl-uaa
+              TokenServiceKeyName: raptl-uaa-key
+              URL: ~{abap-srv/url}
               sap.cloud.service: com.jhodel.rap.travellist
-            - Authentication: OAuth2UserTokenExchange
-              Name: raptl_uaa
-              ServiceInstanceName: raptl-xsuaa-srv
+            - Name: raptl-html5-host
+              ServiceInstanceName: raptl-html5-host
+              ServiceKeyName: raptl-html5-host-key
+              sap.cloud.service: com.jhodel.rap.travellist
+            - Name: raptl-uaa
+              Authentication: OAuth2UserTokenExchange
+              ServiceInstanceName: raptl-uaa
               ServiceKeyName: raptl-uaa-key
               sap.cloud.service: com.jhodel.rap.travellist
           existing_destinations_policy: update
     build-parameters:
       no-source: true
 
+  - name: raptl-app-content
+    type: com.sap.application.content
+    path: .
+    requires:
+      - name: raptl-html5-host
+        parameters:
+          content-target: true
+    build-parameters:
+      build-result: resources
+      requires:
+        - name: comjhodelraptravellist
+          target-path: resources/
+          artifacts:
+            - comjhodelraptravellist.zip
+
+  - name: comjhodelraptravellist
+    type: html5
+    path: app/travellist
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+        - npm install
+        - npm run build:cf
+      supported-platforms: []
+
 resources:
   - name: raptl-uaa
     type: org.cloudfoundry.managed-service
     parameters:
-      path: ./xs-security.json
       service: xsuaa
-      service-name: raptl-xsuaa-srv
       service-plan: application
+      path: ./xs-security.json
 
-  - name: raptl-repo-host
+  - name: abap-srv
+    type: org.cloudfoundry.existing-service
+    properties:
+      url: "https://cb629c8e-9ddd-4225-b4db-603ce09635fb.abap.us10.hana.ondemand.com"
+    parameters:
+      service-name: riz-inno-abap-sbx
+
+  - name: raptl-html5-host
     type: org.cloudfoundry.managed-service
     parameters:
       service: html5-apps-repo
