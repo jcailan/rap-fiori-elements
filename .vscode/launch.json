@@ -1,88 +1,85 @@
 {
-    "configurations": [
-        {
-            "name": "Start travellist",
-            "type": "node",
-            "request": "launch",
-            "runtimeExecutable": "npx",
-            "cwd": "${workspaceFolder}/app/travellist",
-            "windows": {
-                "runtimeExecutable": "npx.cmd"
-            },
-            "runtimeArgs": [
-                "fiori",
-                "run"
-            ],
-            "args": [
-                "--open",
-                "test/flpSandbox.html#comjhodelraptravellist-tile"
-            ],
-            "console": "internalConsole",
-            "internalConsoleOptions": "openOnSessionStart",
-            "outputCapture": "std",
-            "port": 9229,
-            "env": {
-                "DEBUG": "--inspect",
-                "FIORI_TOOLS_URL_PARAMS": "sap-ui-xx-viewCache=false",
-                "run.config": "{\"handlerId\":\"fiori_tools\",\"runnableId\":\"/home/user/projects/rap-fiori-elements/app/travellist\"}"
-            }
-        },
-        {
-            "name": "Start travellist Mock",
-            "type": "node",
-            "request": "launch",
-            "cwd": "${workspaceFolder}/app/travellist",
-            "runtimeExecutable": "npx",
-            "windows": {
-                "runtimeExecutable": "npx.cmd"
-            },
-            "runtimeArgs": [
-                "fiori",
-                "run"
-            ],
-            "args": [
-                "--config",
-                "./ui5-mock.yaml",
-                "--open",
-                "test/flpSandbox.html#comjhodelraptravellist-tile"
-            ],
-            "console": "internalConsole",
-            "internalConsoleOptions": "openOnSessionStart",
-            "outputCapture": "std",
-            "port": 9229,
-            "env": {
-                "FIORI_TOOLS_URL_PARAMS": "sap-ui-xx-viewCache=false",
-                "run.config": "{\"handlerId\":\"fiori_tools\",\"runnableId\":\"/home/user/projects/rap-fiori-elements/app/travellist\"}"
-            }
-        },
-        {
-            "name": "Start travellist Local",
-            "type": "node",
-            "request": "launch",
-            "cwd": "${workspaceFolder}/app/travellist",
-            "runtimeExecutable": "npx",
-            "windows": {
-                "runtimeExecutable": "npx.cmd"
-            },
-            "runtimeArgs": [
-                "fiori",
-                "run"
-            ],
-            "args": [
-                "--config",
-                "./ui5-local.yaml",
-                "--open",
-                "test/flpSandbox.html#comjhodelraptravellist-tile"
-            ],
-            "console": "internalConsole",
-            "internalConsoleOptions": "openOnSessionStart",
-            "outputCapture": "std",
-            "port": 9229,
-            "env": {
-                "FIORI_TOOLS_URL_PARAMS": "sap-ui-xx-viewCache=false",
-                "run.config": "{\"handlerId\":\"fiori_tools\",\"runnableId\":\"/home/user/projects/rap-fiori-elements/app/travellist\"}"
-            }
-        }
-    ],
-    "compounds": []
+	"configurations": [
+		{
+			"name": "Start travellist",
+			"type": "node",
+			"request": "launch",
+			"runtimeExecutable": "npx",
+			"cwd": "${workspaceFolder}/app/travellist",
+			"windows": {
+				"runtimeExecutable": "npx.cmd"
+			},
+			"runtimeArgs": [
+				"fiori",
+				"run"
+			],
+			"args": [
+				"--open",
+				"test/flpSandbox.html#comjhodelraptravellist-tile"
+			],
+			"console": "internalConsole",
+			"internalConsoleOptions": "openOnSessionStart",
+			"outputCapture": "std",
+			"port": 9229,
+			"env": {
+				"DEBUG": "--inspect",
+				"FIORI_TOOLS_URL_PARAMS": "sap-ui-xx-viewCache=false"
+			}
+		},
+		{
+			"name": "Start travellist Mock",
+			"type": "node",
+			"request": "launch",
+			"cwd": "${workspaceFolder}/app/travellist",
+			"runtimeExecutable": "npx",
+			"windows": {
+				"runtimeExecutable": "npx.cmd"
+			},
+			"runtimeArgs": [
+				"fiori",
+				"run"
+			],
+			"args": [
+				"--config",
+				"./ui5-mock.yaml",
+				"--open",
+				"test/flpSandbox.html#comjhodelraptravellist-tile"
+			],
+			"console": "internalConsole",
+			"internalConsoleOptions": "openOnSessionStart",
+			"outputCapture": "std",
+			"port": 9229,
+			"env": {
+				"FIORI_TOOLS_URL_PARAMS": "sap-ui-xx-viewCache=false"
+			}
+		},
+		{
+			"name": "Start travellist Local",
+			"type": "node",
+			"request": "launch",
+			"cwd": "${workspaceFolder}/app/travellist",
+			"runtimeExecutable": "npx",
+			"windows": {
+				"runtimeExecutable": "npx.cmd"
+			},
+			"runtimeArgs": [
+				"fiori",
+				"run"
+			],
+			"args": [
+				"--config",
+				"./ui5-local.yaml",
+				"--open",
+				"test/flpSandbox.html#comjhodelraptravellist-tile"
+			],
+			"console": "internalConsole",
+			"internalConsoleOptions": "openOnSessionStart",
+			"outputCapture": "std",
+			"port": 9229,
+			"env": {
+				"FIORI_TOOLS_URL_PARAMS": "sap-ui-xx-viewCache=false"
+			}
+		}
+	],
+	"compounds": []
 }

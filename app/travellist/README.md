@@ -1,12 +1,12 @@
 ## Application Details
 |               |
 | ------------- |
-|**Generation Date and Time**<br>Sat Mar 25 2023 09:52:39 GMT+0000 (Coordinated Universal Time)|
+|**Generation Date and Time**<br>Sat Mar 25 2023 21:51:22 GMT+0800 (Malaysia Time)|
 |**App Generator**<br>@sap/generator-fiori-elements|
-|**App Generator Version**<br>1.9.2|
-|**Generation Platform**<br>SAP Business Application Studio|
-|**Template Used**<br>List Report Page V4|
-|**Service Type**<br>SAP System (ABAP On Premise)|
+|**App Generator Version**<br>1.7.5|
+|**Generation Platform**<br>Visual Studio Code|
+|**Floorplan Used**<br>List Report Object Page V4|
+|**Service Type**<br>SAP System (ABAP Environment on SAP Business Technology Platform)|
 |**Service URL**<br>https://cb629c8e-9ddd-4225-b4db-603ce09635fb.abap.us10.hana.ondemand.com/sap/opu/odata4/sap/zui_fe_travel_002306_o4/srvd/sap/zui_fe_travel_002306_o4/0001/
 |**Module Name**<br>travellist|
 |**Application Title**<br>Travel List|
@@ -17,7 +17,7 @@
 |**Enable TypeScript**<br>False|
 |**Add Eslint configuration**<br>False|
 |**Main Entity**<br>Travel|
-|**Navigation Entity**<br>None|
+|**Navigation Entity**<br>_Booking|
 
 ## travellist
 

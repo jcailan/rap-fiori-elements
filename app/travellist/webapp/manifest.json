@@ -1,5 +1,5 @@
 {
-    "_version": "1.48.0",
+    "_version": "1.45.0",
     "sap.app": {
         "id": "com.jhodel.rap.travellist",
         "type": "application",
@@ -12,8 +12,8 @@
         "resources": "resources.json",
         "sourceTemplate": {
             "id": "@sap/generator-fiori:lrop",
-            "version": "1.9.2",
-            "toolsId": "a4fafb95-416f-4934-b1b4-8469732d0bb2"
+            "version": "1.7.5",
+            "toolsId": "15550c8c-0811-4f27-ad95-fdf563b14276"
         },
         "dataSources": {
             "mainService": {
@@ -32,6 +32,21 @@
                 "uri": "annotations/annotation.xml",
                 "settings": {
                     "localUri": "annotations/annotation.xml"
+                }
+            }
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "com-jhodel-rap-travellist-inbound": {
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    },
+                    "semanticObject": "TravelList",
+                    "action": "manage",
+                    "title": "{{flpTitle}}",
+                    "subTitle": "{{flpSubtitle}}",
+                    "icon": ""
                 }
             }
         }
@@ -116,6 +131,15 @@
                         "TravelList",
                         "TravelObjectPage"
                     ]
+                },
+                {
+                    "pattern": "Travel({key})/_Booking({key2}):?query:",
+                    "name": "BookingObjectPage",
+                    "target": [
+                        "TravelList",
+                        "TravelObjectPage",
+                        "BookingObjectPage"
+                    ]
                 }
             ],
             "targets": {
@@ -147,11 +171,31 @@
                     "options": {
                         "settings": {
                             "editableHeaderContent": false,
-                            "entitySet": "Travel"
+                            "entitySet": "Travel",
+                            "navigation": {
+                                "_Booking": {
+                                    "detail": {
+                                        "route": "BookingObjectPage"
+                                    }
+                                }
+                            }
                         }
                     },
                     "controlAggregation": "midColumnPages",
                     "contextPattern": "/Travel({key})"
+                },
+                "BookingObjectPage": {
+                    "type": "Component",
+                    "id": "BookingObjectPage",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings": {
+                            "editableHeaderContent": false,
+                            "entitySet": "Booking"
+                        }
+                    },
+                    "controlAggregation": "endColumnPages",
+                    "contextPattern": "/Travel({key})/_Booking({key2})"
                 }
             }
         },
