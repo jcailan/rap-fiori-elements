@@ -5,3 +5,7 @@ Create a list report object page application using your SAP Business Technology 
 See: [Create a Travel App with SAP Fiori Elements Based on OData V4 RAP Service](https://developers.sap.com/group.fiori-tools-odata-v4-travel.html)
 
 ![](assets/app.png)
+
+## DEPLOYMENT TO BTP ABAP
+
+See [Create a SAP Fiori App in Visual Studio Code and Deploy it to SAP BTP, ABAP Environment](https://developers.sap.com/tutorials/abap-environment-vs-code.html)
